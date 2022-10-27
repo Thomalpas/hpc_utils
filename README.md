@@ -73,7 +73,80 @@ moment). BUT, you can see that the parallel computation took env. 20s while the
 serial computation took env. 100s, i.e. five times more! It corresponds to the
 fact that we defined the parallel computation with five cores :) 
 
-### Julia more serious example (TODO)
+### Julia Pkg installation 
+
+The clusters have internet connection, so you can install julia package normally. 
+You can test it by running `qsub job_pkg_install_julia.sh`!
+
+If you look at `pkg_add.error`, you will see something like that:
+
+```
+Installing known registries into `~/.julia`
+  Updating registry at `~/.julia/registries/General.toml`
+ Resolving package versions...
+ Installed JpegTurbo_jll ──────────────────── v2.1.2+0
+ Installed x265_jll ───────────────────────── v3.5.0+0
+ Installed Calculus ───────────────────────── v0.5.1
+ Installed TreeViews ──────────────────────── v0.3.0
+ Installed libfdk_aac_jll ─────────────────── v2.0.2+0
+ Installed DifferentialEquations ──────────── v7.6.0
+```
+
+So julia created in your home directory a folder architecture in `~/.julia` to
+keep track of the installed package and their version.
+
+### DifferentialEquation example 
+
+Run lorenz equation example: see `julia_lorenz.jl`
+
+In `sharc` folder, type `qsub job_lorenz_julia.sh`
+
+### Parallel computation in julia
+
+[Interesting examples](https://www.stochasticlifestyle.com/multi-node-parallelism-in-julia-on-an-hpc/).
+
+Let's first test interactively:
+
+```
+# Request 1 node with 5G 
+qrsh -pe smp 1 -l  h_vmem=5G
+julia
+```
+
+In julia:
+
+```
+using Distributed
+println("n workers: ",nworkers(), ", n process:", nprocs())
+```
+
+You should see that there is only one core and one process. Now quit Julia.
+
+See how many cpu you have at your node by typing `nproc`
+
+Restart Julia: 
+
+```
+julia -p 5 
+```
+
+In julia:
+
+```
+using Distributed
+println("n workers: ",nworkers(), ", n process:", nprocs())
+```
+
+Now you should see that you have access to 5 workers. You can even see their
+names:
+
+```
+pmap(x->run(`hostname`),workers());
+```
+The node names are the same because we requested only one name.
+
+[Interesting example for simulation](https://cecileane.github.io/computingtools/pages/notes1209.html)
+
 
 # Other stuff 
 

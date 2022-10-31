@@ -68,8 +68,7 @@ Serial computation time:
   0.047   0.003 100.138 
 ```
 
-We asked for 5 cores but R detected 16 (haha, I do not understand at the
-moment). BUT, you can see that the parallel computation took env. 20s while the 
+We asked for 5 cores but R detected 16. You can see that the parallel computation took env. 20s while the 
 serial computation took env. 100s, i.e. five times more! It corresponds to the
 fact that we defined the parallel computation with five cores :) 
 
@@ -184,15 +183,17 @@ srun --pty bash -i
 module avail
 ```
 
-Now load Julia and R: 
+Now load Julia and R:
 
 ```
 module load apps/R/4.0.0/gcc-10.1
-```
-
-```
 module load apps/julia
 ```
+
+Please note that you have to load the above specific version of R if you intend
+also to use Julia. Other R versions will make Julia fails (From Desmond Ryan:
+"The julia install is pre-built binaries so suspect there is an incapability
+between gcc versions (for the R version you used & the compilation of julia)") .
 
 ## Clone a github repo on the cluster 
 

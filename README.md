@@ -184,8 +184,10 @@ srun --pty bash -i
 module avail
 ```
 
+Now load Julia and R: 
+
 ```
-module load apps/R/4.2.1/gcc-8.2.0
+module load apps/R/4.0.0/gcc-10.1
 ```
 
 ```
@@ -193,6 +195,7 @@ module load apps/julia
 ```
 
 ## Clone a github repo on the cluster 
+
 
 ```
 git clone https://github.com/...git 

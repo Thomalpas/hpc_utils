@@ -1,20 +1,20 @@
-#!/bin/bash                                                                                                               
+#!/bin/bash
 
 # Number of nodes resquested
 #SBATCH --cpus-per-task=1
 
-# Job name 
+# Job name
 #$ -N try_julia
 
 # Error message
 #$ -e try_julia.error
 #$ -o try_julia.out
 
-# Amount of RAM requested per node 
+# Amount of RAM requested per node
 #$ -l rmem=1G
 
-# Load modules 
-module load apps/julia 
+# Load modules
+module load apps/julia/1.8.5/binary
 
 echo "Which version of julia is used?"
 which julia | echo

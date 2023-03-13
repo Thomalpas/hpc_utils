@@ -159,7 +159,7 @@ combination to run over. You want want that each job perform a number of
 paramer combination, like one hundred, one thousand, etc...
 
 I provide a dummy example for `julia` and `R` in the  
-`sharc`:
+`sharc` folder:
 - `job_test_arrayjob_julia.sh`
 - `job_test_arrayjob_R.sh`
 

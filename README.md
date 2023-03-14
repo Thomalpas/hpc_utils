@@ -6,6 +6,8 @@ parallelize julia code (and R code too may be if useful).
 
 Do not hesitate to raise issues and to give feedbacks.
 
+Contributors: Alain Danet and John Jackson
+
 ## Few disclaimers
 
 Here I take ShARC cluster as example, but you can change for bessemer and
@@ -163,7 +165,19 @@ I provide a dummy example for `julia` and `R` in the
 - `job_test_arrayjob_julia.sh`
 - `job_test_arrayjob_R.sh`
 
+```
+qsub job_test_arrayjob_R.sh
+qsub job_test_arrayjob_julia.sh
+```
+
 Those example will show you how to set an iterator and how to pass it to `julia` and `R`.
+
+- Another example with R where every job will append its result to a common file:
+
+```
+qsub jobtest_array_script_csv.sh
+```
+
 
 # Other stuff
 

@@ -1,6 +1,6 @@
 # Test for BEFWM2
 
-using BEFWM2, Arrow
+using BEFWM2
 
 fw = FoodWeb(nichemodel, 10, C = 0.2, Z = 10)
 

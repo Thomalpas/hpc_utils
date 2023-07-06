@@ -12,6 +12,4 @@ B0 = repeat([0.5], 10)
 
 sol = simulate(mp, B0, tmax = 50)
 
-open("output.txt", "w") do file
-    write(file, string(sol.t[end]))
-end
+print(sol.t)
